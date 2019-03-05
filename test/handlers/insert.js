@@ -15,17 +15,15 @@ const internals = {};
 
 // Test shortcuts
 
-const { describe, it, expect, before } = exports.lab = Lab.script();
+const { describe, it, expect, beforeEach, afterEach } = exports.lab = Lab.script();
 
 
 describe('objection:insert', () => {
 
-    before(async ({ context }) => {
+    beforeEach(async ({ context }) => {
+
         const server = context.server = Hapi.server();
-        await server.register(Plugin)
+        await server.register({ plugin: Objection });
     });
 
-    it('', async ({ context }) => {
-        context.server.route({})
-    });
 });

@@ -3,6 +3,8 @@
 // Load modules
 
 const Lab = require('lab');
+const Hapi = require('hapi');
+
 const Objection = require('../..');
 
 
@@ -13,30 +15,14 @@ const internals = {};
 
 // Test shortcuts
 
-const { describe, it, expect } = exports.lab = Lab.script();
+const { describe, it, expect, beforeEach, afterEach } = exports.lab = Lab.script();
 
 
 describe('objection:delete', () => {
 
+    beforeEach(async ({ context }) => {
 
-    it('returns empty status code when success', async ({ context: { server } }) => {
-
-        server.route({
-            options: {
-                plugins: {
-                    objection: {
-                        throwIfNotFound: true
-                    }
-                }
-            },
-            handler: {
-                'objection:delete': {
-                    query: (query) => query.debug(),
-                    model: {
-                        tableName: 'ashk'
-                    }
-                }
-            }
-        })
+        const server = context.server = Hapi.server();
+        await server.register({ plugin: Objection });
     });
 });

@@ -3,6 +3,8 @@
 // Load modules
 
 const Lab = require('lab');
+const Hapi = require('hapi');
+
 const Objection = require('../..');
 
 
@@ -13,9 +15,15 @@ const internals = {};
 
 // Test shortcuts
 
-const { describe, it, expect } = exports.lab = Lab.script();
+const { describe, it, expect, beforeEach, afterEach } = exports.lab = Lab.script();
 
 
 describe('objection:incrementById', () => {
+
+    beforeEach(async ({ context }) => {
+
+        const server = context.server = Hapi.server();
+        await server.register({ plugin: Objection });
+    });
 
 });

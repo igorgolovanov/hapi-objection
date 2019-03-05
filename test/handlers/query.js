@@ -24,31 +24,6 @@ describe('objection:query', () => {
 
         const server = context.server = Hapi.server();
         await server.register({ plugin: Objection });
-
     });
-
-    afterEach(async ({ context }) => {
-
-        await context.server.stop();
-    });
-
-    it('register handler with default options', async ({ context: { server } }) => {
-
-        server.route({
-            path: '/test1',
-            method: '*',
-            handler: {
-                'objection:query': {
-                    model: {
-                        tableName: 'test123'
-                    }
-                }
-            }
-        });
-
-        await server.inject('/test1');
-    });
-
-
 
 });

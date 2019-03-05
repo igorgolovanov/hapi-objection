@@ -15,7 +15,7 @@ const internals = {};
 
 // Test shortcuts
 
-const { describe, it, expect, beforeEach } = exports.lab = Lab.script();
+const { describe, it, expect, beforeEach, afterEach } = exports.lab = Lab.script();
 
 
 describe('objection:fetchAvg', () => {
@@ -23,7 +23,7 @@ describe('objection:fetchAvg', () => {
     beforeEach(async ({ context }) => {
 
         const server = context.server = Hapi.server();
-        await server.register(Objection);
+        await server.register({ plugin: Objection });
     });
 
 });
