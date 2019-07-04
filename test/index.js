@@ -2,8 +2,8 @@
 
 // Load modules
 
-const Lab = require('lab');
-const Hapi = require('hapi');
+const Lab = require('@hapi/lab');
+const Hapi = require('@hapi/hapi');
 
 const Objection = require('..');
 
@@ -15,7 +15,7 @@ const internals = {};
 
 // Test shortcuts
 
-const { describe, it, expect, beforeEach, afterEach } = exports.lab = Lab.script();
+const { describe, it, expect } = exports.lab = Lab.script();
 
 
 describe('objection', () => {
@@ -24,5 +24,21 @@ describe('objection', () => {
 
         const server = Hapi.server();
         await server.register(Objection);
+    });
+
+    it('should decorate server with model() function', async () => {
+
+        const server = Hapi.server();
+        await server.register(Objection);
+
+        expect(server.model).to.be.a.function();
+    });
+
+    it('should decorate server with query() function', async () => {
+
+        const server = Hapi.server();
+        await server.register(Objection);
+
+        expect(server.query).to.be.a.function();
     });
 });
