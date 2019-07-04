@@ -4,7 +4,7 @@
   "description": "Hapi.js plugin for integration with Objection.js",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -a @hapi/code -t 100 -L -m 3000",
+    "test": "lab -a @hapi/code -t 70 -L -m 3000",
     "test-cov-html": "lab -a @hapi/code -r html -o coverage.html -m 3000"
   },
   "repository": {
